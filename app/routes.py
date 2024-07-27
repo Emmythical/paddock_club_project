@@ -6,10 +6,11 @@ from .forms import RegistrationForm, LoginForm, PostForm
 from .models import User, Post
 from . import db
 
-main = Blueprint('main', __name__)
+main = Blueprint('main', __name__, template_folder='../templates')
 
 @main.route('/')
 def home():
+    posts = ('History', 'Tech', 'Merchandise')
     posts = Post.query.all()
     return render_template('home.html', posts=posts)
 
