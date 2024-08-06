@@ -11,8 +11,12 @@ main = Blueprint('main', __name__, template_folder='../templates')
 @main.route('/')
 def home():
     posts = ('History', 'Tech', 'Merchandise')
-    posts = Post.query.all()
+    posts = Post.query.get_or_404()
+    usuarios = User.query.get_or_404('1')
+    print(usuarios.posts)
     return render_template('home.html', posts=posts)
+
+
 
 @main.route('/register', methods=['GET', 'POST'])
 def register():
