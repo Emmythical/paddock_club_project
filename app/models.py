@@ -12,6 +12,7 @@ class User(db.Model):
     posts = db.relationship('Post', backref='author', lazy=True)
 
 class Post(db.Model):
+    __tablename__="Post"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
